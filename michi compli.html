@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>THE MICHELA SHOW — Video</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --pink: #ff7fbf;
+      --pink-light: #ffd6e9;
+      --pink-dark: #d14f93;
+      --bg: #fff6fb;
+      --text: #3b2c35;
+      --white: #ffffff;
+      --shadow: 0 10px 25px rgba(209, 79, 147, 0.15);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Nunito', system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, var(--bg), #ffffff);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      background:
+        radial-gradient(ellipse at top, var(--pink-light), transparent 60%),
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="60"><text x="10" y="40" font-family="Nunito" font-size="20" fill="%23ffd6e9">♡</text></svg>') repeat;
+    }
+    .hero h1 { margin: 0 0 8px; font-size: 44px; color: var(--pink-dark); }
+    .hero p { margin: 0; font-size: 18px; opacity: 0.8; }
+
+    .grid {
+      max-width: 1100px;
+      margin: 20px auto 60px;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s;
+    }
+    .card:hover { transform: translateY(-4px); }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card .content { padding: 14px; display: grid; gap: 8px; }
+    .card .title { font-weight: 700; font-size: 16px; color: var(--pink-dark); }
+    .card .actions { margin-top: 8px; }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: var(--pink);
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: filter 0.2s;
+    }
+    .btn-primary:hover { filter: brightness(1.05); }
+
+    .footer { text-align: center; padding: 24px; color: #8a6f7b; }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <h1>THE MICHELA SHOW</h1>
+    <p>ciao amore, guarda i nostri video 💗</p>
+  </header>
+
+  <main class="grid" id="videos"></main>
+
+  <footer class="footer">
+    <p>Con affetto, la festa • © 2025</p>
+  </footer>
+
+  <script>
+    // Lista dei video
+    const videosData = [
+            {
+        title: "Video dalle tue girl preferite",
+        url: "https://youtube.com/shorts/pkIxGEf0yPU?si=IcmhthSRt4JAZl7g",
+        image: "https://img.freepik.com/premium-vector/watercolor-potato-vector-art-2023-watercolor-potato_873925-122855.jpg"
+      },
+  
+      {
+        title: "Video dal tuo pesc a bror",
+        url: "https://youtu.be/Y7YARZH494Y?si=JLjdlEgVFR3ucNre",
+        image: "https://th.bing.com/th/id/R.74f98c061ad22a00422956540e373ecd?rik=5%2fqd9gnb30Um%2bg&riu=http%3a%2f%2fwww.pausacaffeblog.it%2fwp%2fwp-content%2fuploads%2f2009%2f11%2fBrodo-di-pesce.jpg&ehk=kBVk14wEJRsyoa8%2bsTYrWrEQRkLIgCW2wd0XopuWx%2bM%3d&risl=&pid=ImgRaw&r=0"
+      },
+        {
+        title: "numero tres",
+        url: "https://youtu.be/ecTWwpRVc7k?si=77x6jDintDCEA1IW",
+        image: "https://babycapybara.s3.amazonaws.com/wp-content/uploads/2024/01/11222429/capybara-wallpaper86-928x1536.jpg"
+      },
+      {
+        title: "Video salvini il gay che elenca cose",
+        url: "https://youtu.be/mNyethAqJzk?si=2nGVnUOm4rSsOfXn",
+        image: "https://images2.corriereobjects.it/methode_image/2018/06/30/Esteri/Foto%20Gallery/36351988_10157109594909381_8258436169847537664_n_MGZOOM.jpg"
+      },
+       {
+        title: "Le minoranze etniche ti augurano i più sinceri auguri",
+        url: "https://www.tiktok.com/@african.birthday.wishess/video/7417860653957811464",
+        image: "https://th.bing.com/th/id/R.cfc11f1f1d334fc9f7224ee7f055c6ac?rik=hDSLS88jLgyXUA&pid=ImgRaw&r=0"
+      },
+      {
+        title: "enza in formato scimmia",
+        url: "https://www.tiktok.com/@monkeyscomics/video/7562184986749619478?_r=1&_t=ZN-91Z6TDtu5Vm",
+        image: "https://tse3.mm.bing.net/th/id/OIP.ZEu-teJ9uUn6GTno__Xj9AHaEK?rs=1&pid=ImgDetMain&o=7&rm=3"
+      },
+       {
+        title: "bello figo ti manda un bacio",
+        url: "https://youtube.com/shorts/-1tlDDVY9x8?si=sNV8hBCE7b5gGwum",
+        image: "https://i.ytimg.com/vi/XmQZq6--H28/oar2.jpg?sqp=-oaymwEkCJUDENAFSFqQAgHyq4qpAxMIARUAAAAAJQAAyEI9AICiQ3gB&rs=AOn4CLBEk2pPk_u3kOlXPAUp371LYdvFnw"
+      },
+        
+
+    ];
+
+    const videosContainer = document.getElementById("videos");
+
+    function renderVideos() {
+      videosContainer.innerHTML = "";
+      videosData.forEach(video => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          <img src="${video.image}" alt="${video.title}">
+          <div class="content">
+            <div class="title">${video.title}</div>
+            <div class="actions">
+              <a href="${video.url}" target="_blank" class="btn-primary">Guardali tutti♥</a>
+            </div>
+          </div>
+        `;
+        videosContainer.appendChild(card);
+      });
+    }
+
+    renderVideos();
+  </script>
+</body>
+</html>
+
+
